@@ -28,7 +28,9 @@ import Settings from './Settings.jsx';
 import Modal from './Modal.js';
 import Threads from './Threads.jsx';
 import GdbCommandInput from './GdbCommandInput.js';
-import {Expressions, Locals, HoverVar} from './Variables.js';
+import Expressions from './Expressions.jsx';
+import Locals from './Locals.jsx';
+import HoverVar from './HoverVar.jsx';
 import GdbConsoleComponent from './GdbConsole.js';
 import Memory from './Memory.jsx';
 import InferiorProgramInfo from './InferiorProgramInfo.jsx';
@@ -127,12 +129,12 @@ ReactDOM.render(<InferiorProgramInfo signals={initial_data.signals} />, document
 ReactDOM.render(<Registers signals={initial_data.signals} />, document.getElementById('registers'))
 ReactDOM.render(<Memory />, document.getElementById('memory'))
 ReactDOM.render(<Settings />, document.getElementById('settings_container'))
+ReactDOM.render(<Expressions />, document.getElementById('expressions'))
+ReactDOM.render(<Locals />, document.getElementById('locals'))
+ReactDOM.render(<HoverVar />, document.getElementById('hovervar_container'))
 
 // TODO make all these into react components
 // TODO remove jquery dependency
-Expressions.init()
-HoverVar.init()
-Locals.init()
 
 GlobalEvents.init()
 GdbApi.init()

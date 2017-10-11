@@ -4,7 +4,7 @@ import Memory from './Memory.jsx';
 import Modal from './Modal.js';
 import Actions from './Actions.js';
 import GdbConsoleComponent from './GdbConsole.js';
-import {Expressions} from './Variables.js';
+import GdbVariable from './GdbVariable.jsx';
 import constants from './constants.js';
 import process_gdb_response from './process_gdb_response.js';
 
@@ -227,7 +227,7 @@ const GdbApi = {
         }else if(store.get('interpreter') === 'lldb'){
             // the * arg doesn't work, so loop over all
             // names and push commands for each
-            cmds = cmds.concat(Expressions.get_update_cmds())
+            cmds = cmds.concat(GdbVariable.get_update_cmds())
         }
 
         // update registers

@@ -207,14 +207,6 @@ class Memory extends React.Component {
     }
 
     /**
-     * Scan arbitrary text for addresses, and turn those addresses into links
-     * that can be clicked in gdbgui
-     */
-    static make_addrs_into_links(text, name=undefined){
-        return text.replace(/(0x[\d\w]+)/g, Memory._make_addr_into_link('$1', name))
-    }
-
-    /**
      * @param text: string to convert address-like text into clickable components
      * return react component
      */

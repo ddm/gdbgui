@@ -8,7 +8,7 @@ import StatusBar from './StatusBar.jsx';
 import Memory from './Memory.jsx';
 import GdbApi from './GdbApi.js';
 import GdbConsoleComponent from './GdbConsole.js';
-import {Expressions} from './Variables.js';
+import GdbVariable from './GdbVariable.jsx';
 import Modal from './Modal.js';
 import Actions from './Actions.js';
 import SourceCode from './SourceCode.jsx';
@@ -139,15 +139,15 @@ const process_gdb_response = function(response_array){
             }
             // gdbgui expression (aka a gdb variable was changed)
             if ('changelist' in r.payload){
-                Expressions.handle_changelist(r.payload.changelist)
+                GdbVariable.handle_changelist(r.payload.changelist)
             }
             // gdbgui expression was evaluated for the first time for a child variable
             if('has_more' in r.payload && 'numchild' in r.payload && 'children' in r.payload){
-                Expressions.gdb_created_children_variables(r)
+                GdbVariable.gdb_created_children_variables(r)
             }
             // gdbgui expression was evaluated for the first time for a root variable
             if ('name' in r.payload){
-                Expressions.gdb_created_root_variable(r)
+                GdbVariable.gdb_created_root_variable(r)
             }
         } else if (r.type === 'result' && r.message === 'error'){
             // render it in the status bar, and don't render the last response in the array as it does by default

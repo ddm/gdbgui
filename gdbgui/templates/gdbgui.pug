@@ -85,7 +85,8 @@ html
         #middle
             #middle_left.content(style='height: 100%; float: left;')
                 //- source code
-                #hovervar.hidden todo - display content
+                #hovervar_container
+                    //- .hidden todo - display content
                 div#code_container.gdb_content_div(style='overflow: auto; height: 100%;')
 
             #middle_right.content(style='height: 100%; float: left; overflow-y: auto; overflow-x: visible;')
@@ -102,15 +103,14 @@ html
                         span.glyphicon.glyphicon-chevron-down#locals_glyph(style='margin-right: 6px;')
                         span.lighttext locals
                     div#locals_collapse_wrapper
-                        div#locals.gdb_content_div(style='margin-top: 6px;')
+                        #locals
 
                 div.no_padding
                     div.titlebar.flex.visibility_toggler(data-visibility_target_selector_string="#expressions_collapse_wrapper", data-glyph_selector='#expressions_glyph')
                         span.glyphicon.glyphicon-chevron-down#expressions_glyph(style='margin-right: 6px;')
                         span.lighttext expressions
                     div#expressions_collapse_wrapper
-                        input#expressions_input.form-control(placeholder='expression or variable', style='display: inline; padding: 6px 6px; height: 25px; font-size: 1em; margin-top: 5px;')
-                        div#expressions.gdb_content_div(style='margin-top: 6px;')
+                        #expressions
 
                 div.no_padding
                     div.titlebar.flex.visibility_toggler(data-visibility_target_selector_string="#tree_collapse_wrapper", data-glyph_selector='#tree_glyph')

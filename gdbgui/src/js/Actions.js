@@ -1,5 +1,5 @@
 import {store} from './store.js';
-import {Expressions} from './Variables.js';
+import GdbVariable from './GdbVariable.jsx';
 import GdbApi from './GdbApi.js';
 import SourceCode from './SourceCode.jsx';
 import constants from './constants.js';
@@ -17,7 +17,7 @@ const Actions = {
 
         // remove local variables, and tell gdb to remove them too
         let exprs_objs_to_remove = store.get('expressions').filter(obj => obj.expr_type === 'local')
-        exprs_objs_to_remove.map(obj => Expressions.delete_gdb_variable(obj.name))
+        exprs_objs_to_remove.map(obj => GdbVariable.delete_gdb_variable(obj.name))
     },
     inferior_program_running: function(){
         store.set('inferior_program', constants.inferior_states.running)
